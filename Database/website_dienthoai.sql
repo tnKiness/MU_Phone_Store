@@ -47,7 +47,7 @@ INSERT INTO `binhluan` (`MaBL`, `MaTTSP`, `MaKH`, `NoiDung`) VALUES
 (4, 3, 2, 'XMua đc 5 tháng máy rất trơn rớt hoài bể hết mặt sau mua gói bảo hiểm 6 tháng lh nguyên tháng ko giải quyết. Chắc đợi hết tháng hết bảo hiểm là xog.'),
 (5, 1, 2, 'Điện thoại iphone của mình hiện các dòng chữ xám như vậy làm mình không đăng xuất được Icloud, mình hiện tại đã tắt thời gian sử dụng và đã tắt nguồn khởi động máy lại mà nó vẫn như vậy, tgdd cho mình cách khắc phục với ạ'),
 (6, 1, 2, 'sao bình thường được bạn, bạn xem lại kĩ giúp mình, phần chữ nó xám xịt thế kia mình không thể bấm đăng xuất được, chứ đỏ mới bấm đăng xuất được chứ'),
-(7, 1, 2, 'Dạ nếu sản phẩm mình mua mới tại Thegioididong.com hoặc Dienmayxanh.com từ ngày 1/3/2021 trong vòng 8 tháng gần đây, không bị trầy xước cấn móp, ngấm chất lỏng, còn giữ nguyên tình trạng ban đầu, không bị lỗi do người dùng, còn đủ phụ kiện và khuyến mãi kèm theo thì bên em có chính sách thu lại ạ. Mình vui lòng cung cấp số điện thoại mua hàng để bên em hỗ trợ tính giá thu lại tham khảo giúp mình ạ! '),
+(7, 1, 2, 'Dạ nếu sản phẩm mình mua mới tại Thegioididong.com hoặc Dienmayxanh.com từ ngày 1/10/2024 trong vòng 8 tháng gần đây, không bị trầy xước cấn móp, ngấm chất lỏng, còn giữ nguyên tình trạng ban đầu, không bị lỗi do người dùng, còn đủ phụ kiện và khuyến mãi kèm theo thì bên em có chính sách thu lại ạ. Mình vui lòng cung cấp số điện thoại mua hàng để bên em hỗ trợ tính giá thu lại tham khảo giúp mình ạ! '),
 (8, 1, 2, 'Dạ sản phẩm hiện tạm hết hàng tại khu vực của mình, nếu quan tâm, mình thông tin thêm khu vực phường/xã bên em hỗ trợ kiểm tra sản phẩm có chuyển hàng về được hay không giúp mình nhé\r\nMong nhận phản hồi từ anh.'),
 (9, 4, 4, 'Sản phẩm đẹp, dịch vụ tốt'),
 (12, 6, 4, 'Màn hình rất đẹp, coi youtube rất ổn, shop phục vụ nhiệt tình'),
@@ -471,20 +471,20 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `MaKH`, `MaKM`, `DiaChiGH`, `TongTienTT`, `NgayLapHD`, `TinhTrangHD`, `TinhTrangTT`, `SoTienNhan`, `SoTienTra`) VALUES
-(1, 1, 1, 'HCM', 27000000, '2021-12-23', 1, 1, 27000000, 0),
-(4, 4, NULL, 'Đồng Nai', 66450000, '2022-01-01', 1, 1, 70000000, 3550000),
-(5, 4, NULL, 'Q1, HCM', 4180000, '2022-01-02', 0, 0, 0, -4180000),
-(6, 2, NULL, 'Q1, HCM', 66450000, '2022-01-02', 0, 0, 0, 0),
-(7, 4, 6, 'Thủ Đức, HCM', 20700000, '2022-01-08', 0, 0, 0, 0),
-(8, 1, NULL, 'Q1, HCM', 27000000, '2021-04-08', 1, 1, 27000000, 0),
-(9, 2, NULL, 'Thủ Đức, Hồ Chí Min', 5000000, '2021-04-15', 1, 1, 5000000, 0),
-(10, 4, NULL, 'Q9, Hồ Chí Minh', 35500000, '2021-12-16', 1, 1, 35500000, 0),
-(11, 2, NULL, 'Q7, HCM', 8000000, '2021-12-17', 1, 1, 8000000, 0),
-(12, 2, 6, 'Q1, HCM', 24840000, '2022-01-10', 0, 0, 0, 0),
-(13, 1, 6, 'Linh trung, Thủ Đức, HCM', 24840000, '2022-01-11', 1, 0, 0, 0),
-(14, 1, 6, 'Q1, HCM', 11030800, '2022-01-11', 0, 0, 0, 0),
-(15, 2, 6, 'Đồng Nai', 36294000, '2022-01-12', 1, 1, 36294000, 0),
-(16, 2, 6, 'Thủ Đức, HCM', 34490800, '2022-01-13', 1, 1, 34490800, 0);
+(1, 1, 1, 'HCM', 27000000, '2023-12-23', 1, 1, 27000000, 0),
+(4, 4, NULL, 'Đồng Nai', 66450000, '2024-01-01', 1, 1, 70000000, 3550000),
+(5, 4, NULL, 'Q1, HCM', 4180000, '2024-01-02', 0, 0, 0, -4180000),
+(6, 2, NULL, 'Q1, HCM', 66450000, '2024-01-02', 0, 0, 0, 0),
+(7, 4, 6, 'Thủ Đức, HCM', 20700000, '2024-01-08', 0, 0, 0, 0),
+(8, 1, NULL, 'Q1, HCM', 27000000, '2024-04-08', 1, 1, 27000000, 0),
+(9, 2, NULL, 'Thủ Đức, Hồ Chí Min', 5000000, '2024-04-15', 1, 1, 5000000, 0),
+(10, 4, NULL, 'Q9, Hồ Chí Minh', 35500000, '2023-12-16', 1, 1, 35500000, 0),
+(11, 2, NULL, 'Q7, HCM', 8000000, '2024-10-17', 1, 1, 8000000, 0),
+(12, 2, 6, 'Q1, HCM', 24840000, '2024-01-10', 0, 0, 0, 0),
+(13, 1, 6, 'Linh trung, Thủ Đức, HCM', 24840000, '2024-01-11', 1, 0, 0, 0),
+(14, 1, 6, 'Q1, HCM', 11030800, '2024-01-11', 0, 0, 0, 0),
+(15, 2, 6, 'Đồng Nai', 36294000, '2024-11-02', 1, 1, 36294000, 0),
+(16, 2, 6, 'Thủ Đức, HCM', 34490800, '2024-01-13', 1, 1, 34490800, 0);
 
 --
 -- Bẫy `hoadon`
@@ -574,11 +574,11 @@ CREATE TABLE `khuyenmai` (
 --
 
 INSERT INTO `khuyenmai` (`MaKM`, `SoPTKM`, `TuNgay`, `DenNgay`, `TTienToiThieu`) VALUES
-(1, 10, '2021-11-01', '2021-11-30', 100000),
-(2, 12, '2021-12-10', '2021-12-26', 2000000),
-(3, 9, '2021-11-26', '2021-12-01', 66666),
-(4, 14, '2021-11-30', '2021-12-31', 0),
-(6, 8, '2022-01-01', '2022-01-31', 500000);
+(1, 10, '2024-11-01', '2024-11-30', 100000),
+(2, 12, '2024-11-8', '2024-11-15', 2000000),
+(3, 9, '2024-11-26', '2024-12-01', 66666),
+(4, 14, '2024-11-30', '2024-12-31', 888888),
+(6, 8, '2025-01-01', '2025-01-31', 500000);
 
 -- --------------------------------------------------------
 
@@ -650,12 +650,12 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`MaNV`, `TenNV`, `NgayVL`, `Luong`, `SDT`, `Email`, `MatKhau`, `CMND`, `DiaChi`, `LoaiNV`) VALUES
-(2, 'Mai Văn Tiến', '2020-11-12', 7000000, '0339004003', 'MVT@gmail.com', '22222222', '0455634579', 'Thủ Dức - Tp HCM', 'Bán hàng'),
-(3, 'Nguyễn Thị Mai', '2020-11-15', 7000000, '0339004345', 'NTM@gmail.com', '33333333', '0345942456', ' Quận 9 - Tp HCM', 'Tiếp tân'),
-(4, 'Nguyễn Thị Thu', '2020-11-20', 7000000, '0339493345', 'NTT@gmail.com', '44444444', '0445310024', ' Quận 9 - Tp HCM', 'Bán hàng'),
-(5, 'Nguyễn Văn Quang', '2020-12-02', 6000000, '0945600342', 'NVQ@gmail.com', '55555555', '0542247211', ' Quận 2 - Tp HCM', 'Giao hàng'),
+(2, 'Mai Văn Tiến', '2022-11-12', 7000000, '0339004003', 'MVT@gmail.com', '22222222', '0455634579', 'Thủ Dức - Tp HCM', 'Bán hàng'),
+(3, 'Nguyễn Thị Mai', '2022-11-15', 7000000, '0339004345', 'NTM@gmail.com', '33333333', '0345942456', ' Quận 9 - Tp HCM', 'Tiếp tân'),
+(4, 'Nguyễn Thị Thu', '2023-11-20', 7000000, '0339493345', 'NTT@gmail.com', '44444444', '0445310024', ' Quận 9 - Tp HCM', 'Bán hàng'),
+(5, 'Nguyễn Văn Quang', '2023-12-02', 6000000, '0945600342', 'NVQ@gmail.com', '55555555', '0542247211', ' Quận 2 - Tp HCM', 'Giao hàng'),
 (6, 'Nguyễn Hữu Thắng', '2021-12-21', 40000000, '0123124123', 'thang@gm.com', '123456', '214213214', 'ABC', 'Quản lý'),
-(7, 'Nguyễn HT', '2021-12-22', 0, '012749213', '2g4243@gmail.com', '11111111', '214213214', '123214', 'Quản lý'),
+(7, 'Nguyễn HT', '2023-12-22', 23000000, '012749213', '2g4243@gmail.com', '11111111', '214213214', '123214', 'Quản lý'),
 (8, 'Hoàng Trí Tâm', '2022-01-12', 10000000, '0379696428', 'hoangtam704@gmail.com', '11111111', '272801851', 'Đồng Nai', 'Quản lý');
 
 -- --------------------------------------------------------
@@ -678,9 +678,10 @@ CREATE TABLE `phieunhap` (
 --
 
 INSERT INTO `phieunhap` (`MaPN`, `TongTienTT`, `NgayLapPN`, `TinhTrangTT`, `MaNCC`, `MaNV`) VALUES
-(1, 87700000, '2021-12-23', 0, 2, 4),
-(2, 284500000, '2021-11-20', 0, 2, 3),
-(3, 180000000, '2021-12-24', 0, 2, 2);
+(1, 87700000, '2023-12-23', 0, 2, 7),
+(2, 284500000, '2023-11-20', 0, 2, 8),
+(3, 180000000, '2024-3-24', 0, 2, 6);
+
 
 -- --------------------------------------------------------
 
@@ -1064,3 +1065,6 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
