@@ -3,6 +3,7 @@
     object ctsp = ViewData["CTSP"] as object;
     List<Object> ListDT = ViewData["ListDT"] as List<object>;
     List<Object> ListBL = ViewData["ListBL"] as List<object>;
+    List<Object> ListPK = ViewData["ListPK"] as List<object>; // <<Châu>>
     KhachHang kh = ViewBag.KH;
 }
 <div class="mainmenu-area">
@@ -215,7 +216,61 @@
                             </div>
                         </div>
                     </div>
-            
+                    <!-- <<Châu>> -->
+                    <div class="related-products-wrapper">
+                        <h2 class="related-products-title">
+                            Sản phẩm mua kèm
+                            <div class="related-products-carousel">
+                                @foreach (var dt in ListPK)
+                                {
+                                    <div class="single-product">
+                                        <div class="product-f-image">
+                                            <img src="@dt.GetType().GetProperty("HinhAnh").GetValue(dt, null)"
+                                                 alt="" />
+                                            <div class="product-hover">
+                                                <a href="/GioHang/InsertCart2?id1=@dt.GetType().GetProperty("MaTTSP").GetValue(dt,null).ToString()&id2=@ctsp.GetType().GetProperty("MaTTSP").GetValue(ctsp,null).ToString()&MaLoaiSP=@ctsp.GetType().GetProperty("MaLoaiSP").GetValue(ctsp,null).ToString()"
+                                                   class="add-to-cart-link">
+                                                    <i class="
+                                                                fa fa-shopping-cart
+                                                                    "></i>
+                                                    Thêm vào giỏ
+                                                </a>
+                                                <a href="/SanPham/ChiTietSP?t=@dt.GetType().GetProperty("MaTTSP").GetValue(dt,null).ToString()&l=@ctsp.GetType().GetProperty("MaLoaiSP").GetValue(ctsp,null).ToString()"
+                                                   class="view-details-link">
+                                                    <i class="fa fa-link"></i>
+                                                    Xem chi tiết
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <h2>
+                                            <a href="/SanPham/ChiTietSP?t=@dt.GetType().GetProperty("MaTTSP").GetValue(dt, null).ToString()">
+                                                @dt.GetType().GetProperty("TenSP").GetValue(dt, null).ToString()
+                                            </a>
+                                        </h2>
+                                        <!--
+                                        <h4>
+                                        @dt.GetType().GetProperty("MauSac").GetValue(dt, null).ToString()-
+                                        @dt.GetType().GetProperty("Ram").GetValue(dt, null).ToString()GB-
+                                        @dt.GetType().GetProperty("BoNhoTrong").GetValue(dt, null).ToString()GB
+                                        </h4>
+                                        -->
+                                        <div class="product-carousel-price">
+                                            @if (int.Parse(@dt.GetType().GetProperty("GiaKM").GetValue(dt, null).ToString()) > 0)
+                                            {
+                                                <ins>@string.Format("{0:0,0 đ}", dt.GetType().GetProperty("GiaKM").GetValue(dt, null))</ins>
+                                                <del>@string.Format("{0:0,0 đ}", dt.GetType().GetProperty("Gia").GetValue(dt, null))</del>
+                                            }
+                                            else
+                                            {
+                                                <ins>@string.Format("{0:0,0 đ}", dt.GetType().GetProperty("Gia").GetValue(dt, null))</ins>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </h2>
+                    </div>
                     <div class="maincontent-area">
                         <div class="zigzag-bottom"></div>
                         <div class="container">
