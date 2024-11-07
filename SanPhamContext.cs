@@ -545,6 +545,132 @@ namespace DoAn_FW.Models
             return View("DTDD", data);
         }
         */
+        // <<Châu>>
+        public List<object> ListHang(int maloaisp)
+        {
+            List<object> list = new List<object>();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open(); ;
+                var sql = "SELECT th.MaTH, th.TenTH, COUNT(*) AS SL FROM thuonghieu th, thongtinsp t WHERE th.MaTH = t.MaTH AND t.MaLoaiSP = @maloaisp GROUP BY th.MaTH";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("maloaisp", maloaisp);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new
+                        {
+                            MaTH = int.Parse(reader["MaTH"].ToString()),
+                            TenTH = reader["TenTH"].ToString(),
+                            SL = int.Parse(reader["SL"].ToString())
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return list;
+        }
+
+        public List<object> FilterSanPham(int? maloaisp)
+        {
+            List<object> list = new List<object>();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var sql = " SELECT * FROM THONGTINSP WHERE MaLoaiSP = @maloaisp";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("maloaisp", maloaisp);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new
+                        {
+                            MaTTSP = int.Parse(reader["MaTTSP"].ToString()),
+                            MaLoaiSP = int.Parse(reader["MaLoaiSP"].ToString()),
+                            TenSP = reader["TenSP"].ToString(),
+                            HinhAnh = reader["HinhAnh"].ToString(),
+                            SoLuong = int.Parse(reader["SoLuong"].ToString()),
+                            Ram = reader["Ram"].ToString(),
+                            BoNhoTrong = reader["BoNhoTrong"].ToString(),
+                            MauSac = reader["MauSac"].ToString(),
+                            Gia = long.Parse(reader["Gia"].ToString()),
+                            GiaKM = long.Parse(reader["GiaKM"].ToString())
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return list;
+        }
+
+        public List<object> SPLocTheoHangSP(int maloaisp, int? math)
+        {
+            List<object> list = new List<object>();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open(); ;
+                var sql = " SELECT * FROM THONGTINSP WHERE MaTH = @math AND MaLoaiSP = @maloaisp";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("math", math);
+                cmd.Parameters.AddWithValue("maloaisp", maloaisp);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new
+                        {
+                            MaTTSP = int.Parse(reader["MaTTSP"].ToString()),
+                            MaLoaiSP = int.Parse(reader["MaLoaiSP"].ToString()),
+                            TenSP = reader["TenSP"].ToString(),
+                            HinhAnh = reader["HinhAnh"].ToString(),
+                            Ram = reader["Ram"].ToString(),
+                            BoNhoTrong = reader["BoNhoTrong"].ToString(),
+                            MauSac = reader["MauSac"].ToString(),
+                            Gia = long.Parse(reader["Gia"].ToString()),
+                            GiaKM = long.Parse(reader["GiaKM"].ToString())
+                        });
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return list;
+        }
+        public List<object> SearchPK(string? search)
+        {
+            List<object> list = new List<object>();
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                var sql = " SELECT * FROM THONGTINSP WHERE TenSP LIKE '%" + search + "%' AND MaLoaiSP = 3";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(new
+                        {
+                            MaTTSP = int.Parse(reader["MaTTSP"].ToString()),
+                            MaLoaiSP = int.Parse(reader["MaLoaiSP"].ToString()),
+                            TenSP = reader["TenSP"].ToString(),
+                            HinhAnh = reader["HinhAnh"].ToString(),
+                            Ram = reader["Ram"].ToString(),
+                            BoNhoTrong = reader["BoNhoTrong"].ToString(),
+                            MauSac = reader["MauSac"].ToString(),
+                            Gia = long.Parse(reader["Gia"].ToString()),
+                            GiaKM = long.Parse(reader["GiaKM"].ToString())
+                        }); // xem xét chỉnh sửa ở bước 3.
+                    }
+                    reader.Close();
+                }
+                conn.Close();
+            }
+            return list;
+        }
 
     }
 }
