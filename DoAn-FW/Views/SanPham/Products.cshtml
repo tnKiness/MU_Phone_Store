@@ -1,0 +1,423 @@
+﻿@{
+    ViewData["Title"] = "Products";
+    List<object> Model = ViewData["list"] as List<object>;
+    List<object> ModelLoaiSP = ViewData["ListLoaiSP"] as List<object>;
+    List<object> ModelHang = ViewData["ListHang"] as List<object>;
+    List<object> ModelRam = ViewData["ListRam"] as List<object>;
+    List<object> ModelMemory = ViewData["ListMemory"] as List<object>;
+    List<object> ModelManHinh = ViewData["ListManHinh"] as List<object>;
+    KhachHang kh = ViewBag.KH;
+    Pager pager = new Pager();
+
+
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+<div class="mainmenu-area">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Home/Index">Trang chủ</a></li>
+                    <li class="active">
+                        <a href="/SanPham/Products">Sản phẩm</a>
+                    </li>
+                    <li><a href="/TinTuc/DanhSachTinTuc">Tin tức</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End mainmenu area -->
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Danh sách sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="single-product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-9">
+                    <form action="/SanPham/Products">
+                        <input type="search" name="search" class="form-control" placeholder="Search" style="float: left; width: 80%; margin-bottom: 20px;" />
+                        <button type="submit" class="btn btn-primary" style="float: left; height: 34px; padding: 10px; width: 20%; margin-bottom: 20px;">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-sm-3">
+                    <form action="/SanPham/Products" method="get">
+                        <select name="sortOrder" id="sortOrder" onchange="sortProduct(this.value)" class="form-control" style="margin-bottom: 20px;">
+                            <option value="">Chọn sắp xếp</option>
+                            <option value="price_asc">Giá tăng dần</option>
+                            <option value="price_desc">Giá giảm dần</option>
+                            <option value="name_asc">Tên A-Z</option>
+                            <option value="name_desc">Tên Z-A</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+
+                    <form action="/SanPham/Products" method="get">
+
+                    <div class="left-sidebar">
+                        <div class="panel-group category-products" id="accordian">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <a data-toggle="collapse"
+                                               data-parent="#accordian"
+                                               href="#ram">
+                                                <span class="badge pull-right">
+                                                    <i class="fa fa-plus"></i>
+                                                </span>
+                                                <STRONG>BỘ LỌC</STRONG>
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="ram"
+                                         class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    <b>
+                                                        Loại sản phẩm
+                                                    </b>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul style="list-style:none">
+                                                    @foreach (var hang in ModelLoaiSP){
+                                                        <li>
+                                                            <input type="checkbox" name="MaLoaiSP" value="@hang.GetType().GetProperty("MaLoaiSP").GetValue(hang, null)">
+                                                            @hang.GetType().GetProperty("TenLoaiSP").GetValue(hang, null).ToString()
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <hr />
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    <b>Ram</b>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul style="list-style:none">
+                                                    @foreach (var hang in ModelRam)
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="Ram" value="@hang.GetType().GetProperty("Ram").GetValue(hang, null)">
+                                                            @hang.GetType().GetProperty("Ram").GetValue(hang, null).ToString() GB
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <hr />
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    <b>Bộ nhớ trong</b>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul style="list-style:none">
+                                                    @foreach (var hang in ModelMemory)
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="Memory" value="@hang.GetType().GetProperty("BoNhoTrong").GetValue(hang, null)">
+                                                            @hang.GetType().GetProperty("BoNhoTrong").GetValue(hang, null).ToString() GB
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <hr />
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    <b>Màn hình</b>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul style="list-style:none">
+                                                    @foreach (var hang in ModelManHinh)
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="ScreenSize" value="@hang.GetType().GetProperty("kichthuocmanhinh").GetValue(hang, null)">
+                                                            @hang.GetType().GetProperty("kichthuocmanhinh").GetValue(hang, null).ToString()
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <hr />
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">
+                                                    <b>Hãng</b>
+                                                </h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <ul style="list-style:none">
+                                                    @foreach (var hang in ModelHang)
+                                                    {
+                                                        <li>
+                                                            <input type="checkbox" name="MaTH" value="@hang.GetType().GetProperty("MaTH").GetValue(hang, null)">
+                                                            @hang.GetType().GetProperty("TenTH").GetValue(hang, null).ToString()
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <hr />
+
+                                            <button type="submit" onchange="this.form.submit()">Lọc sản phẩm</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    </form>
+
+            </div>
+            <div class="col-sm-9 padding-right">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 col-sm-6" style="float: left; height: 450px; padding: 10px; margin-top: 20px; margin-bottom: 20px;">
+                        <div class="single-shop-product">
+                            <div class="product-upper">
+                                <img src="@item.GetType().GetProperty("HinhAnh").GetValue(item, null).ToString()" alt="" />
+                            </div>
+                            <h2>
+                                <a href="/SanPham/ChiTietSP?t=@item.GetType().GetProperty("MaTTSP").GetValue(item, null).ToString()&l=@item.GetType().GetProperty("MaLoaiSP").GetValue(item, null)">
+                                    @item.GetType().GetProperty("TenSP").GetValue(item, null).ToString()
+                                </a>
+                            </h2>
+                            <h4>
+                                @item.GetType().GetProperty("MauSac").GetValue(item, null).ToString()-
+                                @item.GetType().GetProperty("Ram").GetValue(item, null).ToString()GB-
+                                @item.GetType().GetProperty("BoNhoTrong").GetValue(item, null).ToString()GB
+                            </h4>
+                            <div class="product-carousel-price">
+                                @if (int.Parse(item.GetType().GetProperty("GiaKM").GetValue(item, null).ToString()) > 0)
+                                {
+                                    <del>@string.Format("{0:0,0 đ}", item.GetType().GetProperty("Gia").GetValue(item, null))</del>
+                                    <br />
+                                    <ins>@string.Format("{0:0,0 đ}", item.GetType().GetProperty("GiaKM").GetValue(item, null))</ins>
+                                }
+                                else
+                                {
+                                    <del style="height: 74px; width: 150px"></del>
+                                    <ins>@string.Format("{0:0,0 đ}", item.GetType().GetProperty("Gia").GetValue(item, null))</ins>
+                                }
+                            </div>
+
+                            <div class="product-option-shop">
+                                <a class="add_to_cart_button"
+                                   data-quantity="1"
+                                   data-product_sku=""
+                                   data-product_id="70"
+                                   rel="nofollow"
+                                   href="/SanPham/ChiTietSP?t=@item.GetType().GetProperty("MaTTSP").GetValue(item, null)&l=@item.GetType().GetProperty("MaTH").GetValue(item, null)">
+                                    Xem chi tiết
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-pagination text-center">
+                    <nav>
+                        @if (pager.TotalPages > 0)
+
+                        {
+                            <ul class="pagination">
+                                <!-- Link đến Trang trước -->
+                                <li>
+                                    <a href="javascript:void(0);" onclick="navigatePage(@(pager.CurrentPage - 1))" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+
+                                <!-- Liệt kê các trang -->
+                                @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+
+                                {
+                                    <li class="page-item @(pge == pager.CurrentPage ? "active" : "")">
+                                        <a class="page-link" href="javascript:void(0);" onclick="navigatePage(@pge)">@pge</a>
+                                    </li>
+                                }
+
+                                <!-- Link đến Trang sau -->
+                                <li>
+                                    <a href="javascript:void(0);" onclick="navigatePage(@(pager.CurrentPage + 1))" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        }
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+        function navigatePage(pageNumber) {
+            // Lấy URL hiện tại của trang
+            var currentUrl = window.location.href;
+
+            // Xóa bất kỳ tham số pg nào hiện có trong URL để tránh trùng lặp
+            var cleanUrl = currentUrl.replace(/([?&]pg=\d+)/, '');
+
+            // Thêm tham số pg mới vào URL
+            var newUrl = cleanUrl + (cleanUrl.includes('?') ? '&' : '?') + 'pg=' + pageNumber;
+
+            // Điều hướng đến URL mới
+            window.location.href = newUrl;
+        }
+
+        function getParameterByName(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+        // Thiết lập giá trị của select khi tải trang
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy giá trị sortOrder từ URL
+            const sortOrder = getParameterByName("sortOrder");
+
+            // Nếu có giá trị sortOrder, thiết lập tùy chọn tương ứng là selected
+            if (sortOrder) {
+                document.getElementById("sortOrder").value = sortOrder;
+            }
+        });
+        function sortProduct(sortInfor) {
+            // Lấy URL hiện tại của trang
+            var currentUrl = window.location.href;
+
+            // Xóa bất kỳ tham số sortOrder nào hiện có trong URL để tránh trùng lặp
+            var cleanUrl = currentUrl.replace(/([?&]sortOrder=[^&]*)/, '');
+
+            // Thêm tham số sortOrder mới vào URL
+            var newUrl = cleanUrl + (cleanUrl.includes('?') ? '&' : '?') + 'sortOrder=' + sortInfor;
+
+            // Điều hướng đến URL mới
+            window.location.href = newUrl;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tham số "MaLoaiSP" từ URL
+            var params = new URLSearchParams(window.location.search);
+            var maloaispValues = params.getAll("MaLoaiSP"); // Sử dụng getAll để lấy tất cả giá trị
+
+            // Nếu có tham số "MaLoaiSP" trong URL
+            if (maloaispValues.length > 0) {
+                // Lặp qua tất cả các checkbox và đánh dấu nếu có giá trị trong URL
+                var checkboxes = document.querySelectorAll('input[name="MaLoaiSP"]');
+                checkboxes.forEach(function (checkbox) {
+                    if (maloaispValues.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tham số "Ram" từ URL
+            var params = new URLSearchParams(window.location.search);
+            var ramValues = params.getAll("Ram"); // Sử dụng getAll để lấy tất cả giá trị
+
+            // Nếu có tham số "Ram" trong URL
+            if (ramValues.length > 0) {
+                // Lặp qua tất cả các checkbox và đánh dấu nếu có giá trị trong URL
+                var checkboxes = document.querySelectorAll('input[name="Ram"]');
+                checkboxes.forEach(function (checkbox) {
+                    if (ramValues.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tham số "Memory" từ URL
+            var params = new URLSearchParams(window.location.search);
+            var memoryValues = params.getAll("Memory"); // Sử dụng getAll để lấy tất cả giá trị
+
+            // Nếu có tham số "Memory" trong URL
+            if (memoryValues.length > 0) {
+                // Lặp qua tất cả các checkbox và đánh dấu nếu có giá trị trong URL
+                var checkboxes = document.querySelectorAll('input[name="Memory"]');
+                checkboxes.forEach(function (checkbox) {
+                    if (memoryValues.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tham số "ScreenSize" từ URL
+            var params = new URLSearchParams(window.location.search);
+            var screenValues = params.getAll("ScreenSize"); // Sử dụng getAll để lấy tất cả giá trị
+
+            // Nếu có tham số "ScreenSize" trong URL
+            if (screenValues.length > 0) {
+                // Lặp qua tất cả các checkbox và đánh dấu nếu có giá trị trong URL
+                var checkboxes = document.querySelectorAll('input[name="ScreenSize"]');
+                checkboxes.forEach(function (checkbox) {
+                    if (screenValues.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lấy tham số "MaTH" từ URL
+            var params = new URLSearchParams(window.location.search);
+            var mathValues = params.getAll("MaTH"); // Sử dụng getAll để lấy tất cả giá trị
+
+            // Nếu có tham số "MaTH" trong URL
+            if (mathValues.length > 0) {
+                // Lặp qua tất cả các checkbox và đánh dấu nếu có giá trị trong URL
+                var checkboxes = document.querySelectorAll('input[name="MaTH"]');
+                checkboxes.forEach(function (checkbox) {
+                    if (mathValues.includes(checkbox.value)) {
+                        checkbox.checked = true;
+                    }
+                });
+            }
+        });
+</script>
+
