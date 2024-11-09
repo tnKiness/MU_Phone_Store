@@ -213,16 +213,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="col-md-6" style="padding-left: 0px;">
-                                                <div class="form-group">
-                                                    <label for="hinhAnh">Hình ảnh sản phẩm</label>
-                                                    <input type="hidden" name="HINHANH" value="@Model.HINHANH"/>
-                                                    <input type="file" id="image_list" multiple="multiple">
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group">
+
+                                        <label for="hinhAnh">Hình ảnh sản phẩm</label>
+                                        <input type="text" class="form-control" name="HINHANH" style="width:100%" placeholder="đường link hình ảnh" value="@Model.HINHANH" required>
+
                                     </div>
                                     <div class="row">
                                         <span style="color: red; font-weight: 700; font-size: 18px;">Thông tin sản phẩm</span>
