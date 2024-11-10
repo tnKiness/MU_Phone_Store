@@ -36,6 +36,10 @@ namespace Web_projectframeword_admin.Controllers
         public IActionResult Index(string SearchString, int page = 1)
         {
             DataNV();
+
+            int totalProducts = context.GetTotalProductCount();
+            ViewData["TotalProducts"] = totalProducts;
+            
             var Lhd = context.GetDSCD(page);
             ViewData["pages"] = Lhd.pages;
 
