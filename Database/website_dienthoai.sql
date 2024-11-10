@@ -715,6 +715,7 @@ CREATE TABLE `thongtinsp` (
 
 INSERT INTO `thongtinsp` (`MaTTSP`, `TenSP`, `HinhAnh`, `MaLoaiSP`, `MaTH`, `Gia`, `GiaKM`, `SoLuong`, `MauSac`, `Ram`, `BoNhoTrong`, `Pin`, `kichthuocmanhinh`, `CameraTruoc`, `CameraSau`, `Cpu`) VALUES
 (1, '1280a', 'https://cf.shopee.vn/file/7995a45e3587d28106cedd91d44f66cb', 1, 9, 200000, 180000, 44, 'Đen', 1, 4, 890, 3, '0', '0', 'Intel Xeon E3'),
+(2, 'AirPods 2', 'https://cdn.tgdd.vn/Products/Images/54/236016/bluetooth-airpods-2-apple-mv7n2-imei-1-750x500.jpg', 3, 1, 3090000, 2990000, 20, 'Trắng', 0, 0, 127, 0, 0, 0, 'Chip Apple H1'),
 (3, 'iphone 13', 'https://cdn.tgdd.vn/Products/Images/42/250258/iphone-13-midnight-1-600x600.jpg', 1, 1, 27990000, 27000000, 38, 'Đen', 4, 64, 127, 5, '12 MP', '12 MP', 'Apple A14'),
 (4, 'Oppo A91', 'https://cdn.tgdd.vn/Products/Images/42/217287/oppo-a91-trang-600x600-600x600.jpg', 1, 5, 4000000, 0, 22, 'Trắng', 8, 128, 4000, 5, '48 MP', '48 MP', 'Helios 880'),
 (5, 'Samsung x3', 'https://cdn.tgdd.vn/Products/Images/42/228151/samsung-galaxy-a12-xanh-600x600-1-600x600.jpg', 1, 2, 8999999, 8500000, 42, 'Xanh', 6, 64, 4400, 5.6, '12 MP', '48 MP', '4Snap dragon 710G'),
