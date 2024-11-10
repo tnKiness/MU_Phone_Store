@@ -597,7 +597,8 @@ CREATE TABLE `loaisp` (
 
 INSERT INTO `loaisp` (`MaLoaiSP`, `TenLoaiSP`) VALUES
 (1, 'Điện thoại'),
-(2, 'Máy tính bảng');
+(2, 'Máy tính bảng'),
+(3, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
