@@ -1611,5 +1611,23 @@ namespace Web_projectframeword_admin.Models
             }
             return list;
         }
+
+        public int GetTotalProductCount()
+        {
+            int totalProducts = 0;
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                // Truy vấn đếm tổng số sản phẩm
+                string countQuery = "SELECT COUNT(*) FROM thongtinsp";
+                MySqlCommand countCmd = new MySqlCommand(countQuery, conn);
+                totalProducts = Convert.ToInt32(countCmd.ExecuteScalar());
+
+                conn.Close();
+            }
+
+            return totalProducts;
+        }
     }
 }
