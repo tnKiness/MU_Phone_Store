@@ -108,6 +108,7 @@ namespace Web_ProjectFrameWork.Controllers
             ViewData["CTSP"] = context.ChiTietSP(t);
             ViewData["ListDT"] = context.FilterSanPham(l, t);
             ViewData["ListBL"] = context.BinhLuans(t);
+            ViewData["ListPK"] = context.FilterSanPham(3); //"Tạo một list phụ kiện có thể tìm thấy được với MaLoaiSP = 3"
             return View();
         }
 
@@ -283,5 +284,43 @@ namespace Web_ProjectFrameWork.Controllers
             return View("DTDD", list);
         }
         */
+        public IActionResult PhuKien(int pg = 1, int? math = null, string? search = null)
+        {
+            DataKH();
+            DataCart();
+            var context = new SanPhamContext();
+            int pageSize = 8;
+            List<object> list;
+        
+            if (math != null)
+            {
+                list = context.SPLocTheoHangSP(3, math); // Lọc theo hãng
+            }
+            else if (search != null)
+            {
+                list = context.SearchPK(search); // Tìm kiếm sản phẩm phụ kiện
+                pageSize = 100;
+            }
+            else
+            {
+                list = context.FilterSanPham(3); // Lấy tất cả sản phẩm loại phụ kiện
+            }
+        
+            if (pg < 1) pg = 1;
+            int recsCount = list.Count();
+            var pager = new Pager(recsCount, pg, pageSize);
+        
+            int recSkip = (pg - 1) * pageSize;
+        
+            var data = list.Skip(recSkip).Take(pager.PageSize).ToList();
+        
+            this.ViewBag.Pager = pager;
+        
+            ViewData["list"] = data;
+            ViewData["math"] = math;
+            ViewData["ListLoaiSP"] = context.ListLoaiSP();
+            ViewData["ListHang"] = context.ListHang(3);
+            return View();
+        }
     }
 }
